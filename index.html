@@ -25,8 +25,262 @@
 
 <body>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
+<!--This project uses sounds by the following user;
+- LittleRobotSoundFactory ( https://freesound.org/people/LittleRobotSoundFactory/ )
+and is in no way endorsed by said user.-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+	.two-p-font{
+		font-family: 'Press Start 2P', cursive;
+		color:white;
+	}
+	.two-p-font-dark{
+		font-family: 'Press Start 2P', cursive;
+	}
+	.mt-none{
+		margin-top:0 !important;
+	}
+	.mt-10{
+		margin-top:10px;
+	}
+	.dark-camo-bg{
+		background-color:#333c33;
+		opacity:.7;
+	}
+	.med-camo-bg{
+		background-color:#727365;
+		opacity:.7;
+	}
+	.light-camo-bg{
+		background-color:#bfb8a6;
+		opacity:.7;
+	}
+	.game-con{
+		background-color:#D9D9D9;
+		border:1px solid #707070;
+		border-radius:10px;
+		margin-left:10px;
+		margin-right:10px;
+		padding:10px;
+	}
+	.col-c a:hover{
+		transition: box-shadow .3s;
+		box-shadow: 0 0 10px black;
+	}
+	.col-c a{
+		display:block;
+		transition: box-shadow .3s;
+		font-family: 'Press Start 2P', cursive;
+		font-size:1rem;
+		color:white;
+		background-color:#333c33;
+		opacity:.7;
+		border: 1px solid #111111;
+		max-width: 100%;
+		margin-bottom:10px;
+		padding:10px;
+		text-decoration:none;
+	}
+	.row-con{
+		display:flex;
+		width:100%;
+		margin-bottom:10px;
+	}
+	.status-con{
+		background-color:#222222;
+		opacity:.7;
+		padding:10px;
+		font-family: 'Press Start 2P', cursive;
+		color:white;
+	}
+	.line-space{
+		margin-bottom:10px;
+	}
+	.image-con{
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+	}
+	.image-con img{
+		height:100%;
+		max-height:100px;
+		width:auto;
+		padding-top:20px;
+	}
+	.text-con{
+		padding:15px;
+		font-family: 'Press Start 2P', cursive;
+		color:white;
+	}
+	#rpg-options{
+		transition: opacity .5s;
+	}
+	#rpg-options.fade{
+		opacity:0;
+	}
+	@media screen and (min-width:768px){
+		.two-p-font-dark{
+			font-size:1rem;
+		}
+		.two-p-font{
+			font-size:1rem;
+		}
+		.rpg-header{
+			max-width:700px;
+			margin-left:auto;
+			margin-right:auto;
+			display:flex;
+			flex-wrap:wrap;
+		}
+		.game-con{
+			max-width:700px;
+			margin-left:auto;
+			margin-right:auto;
+			display:flex;
+			flex-wrap:wrap;
+		}
+		.col-a{
+			margin:10px;
+			width:40%;
+
+		}
+		.col-b{
+			display:flex;
+			align-items:center;
+			margin:10px;
+			padding:10px;
+			width:50%;
+			margin-right:auto;
+			border: 1px solid #111111;
+
+		}
+		.col-c{
+			margin:10px;
+			padding:10px;
+			width:100%;
+		}
+		.status-con{
+			border: 1px solid #111111;
+
+		}
+		.image-con{
+
+		}
+	}
+	@media screen and (max-width:767px){
+		.two-p-font-dark{
+			font-size:.675rem;
+		}
+		.two-p-font{
+			font-size:.675rem;
+		}
+		.rpg-header{
+
+		}
+		.game-con{
+			margin-left:auto;
+			margin-right:auto;
+			display:flex;
+			flex-direction:row;
+			flex-wrap:wrap;
+			font-size:.675rem;
+		}
+		.col-a{
+			width:100%;
+			display:flex;
+			margin-bottom:10px;
+
+		}
+		.col-b{
+			border: 1px solid #111111;
+			width:100%;
+			padding:10px;
+			margin-bottom:10px;
+
+		}
+		.col-c{
+			width:100%;
+		}
+		.status-con{
+			border: 1px solid #111111;
+			width:60%;
+			font-size:.675rem;
+
+		}
+		.image-con{
+			width:40%;
+		}
+		.col-c a{
+			font-size:.675rem;
+		}
+	}
+</style>
+<div class="container">
+	<div class="rpg-header">
+		<h1>Choose your Weekend Adventure</h1>
+	</div>
+	<section class="game-con">
+		<section class="col-a">
+			<div class="status-con">
+				<div class="line-space" id="HP">HP: <span id="hp_js"></span></div>
+				<div class="line-space" id="INT">Intelligence: <span id="int_js"></span></div>
+				<div class="line-space" id="PER">Perception: <span id="per_js"></span></div>
+				<div class="line-space" id="PER">Stamina: <span id="sta_js"></span></div>
+				<div>$<span id="usd_js"></span></div>
+			</div>
+			<div class="image-con">
+				<img
+					src="walk_1.gif"
+					alt="A video game character walking">
+				<div class="two-p-font-dark mt-10">
+					<span id="rpg-rank"></span>
+					<span id="rpg-name"></span>
+				</div>
+			</div>
+		</section>
+		<section class="col-b two-p-font med-camo-bg">
+			<p class="mt-none" id="rpg-dialog"></p>
+		</section>
+		<div class="col-c" id="rpg-options">
+			<a href="#" onclick="playWin();" id="opt1"><span>Check the BOSS Facebook page for events</span></a>
+			<a href="#" onclick="playLose();" id="opt2"><span>Take a look at what the Outdoor Adventure Program is offering</span></a>
+			<a href="#" id="opt3"><span>Go out for a drink</span></a>
+		</div>
+	</section>
+</div>
+<script>
+	var dialog = "It's Saturday. This has been a long work week, but you finally have some time to relax and unwind.</p><p> What do you do?"
+	var current_hp = 50
+	var current_int = 25
+	var current_per = 20
+	var current_sta = 25
+	var current_usd = 200
+	const loseAudio = new Audio('https://usarak-official.github.io/cyoa/270329__littlerobotsoundfactory__jingle-lose-00.mp3');
+	const winAudio = new Audio('https://usarak-official.github.io/cyoa/270330__littlerobotsoundfactory__jingle-achievement-01.mp3');
+
+	function playWin() {
+		winAudio.play();
+	}
+	function playLose() {
+		loseAudio.play();
+	}
+	function initialize_game() {
+		document.getElementById('rpg-dialog').innerHTML = dialog;
+		document.getElementById('hp_js').innerHTML = current_hp;
+		document.getElementById('int_js').innerHTML = current_int;
+		document.getElementById('per_js').innerHTML = current_per;
+		document.getElementById('sta_js').innerHTML = current_sta;
+		document.getElementById('usd_js').innerHTML = current_usd;
+	}
+
+	
+
+	window.onload = initialize_game;
+</script>
+
 </body>
 
 </html>
