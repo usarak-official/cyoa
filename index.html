@@ -5,157 +5,6 @@ and is in no way endorsed by said user.-->
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
-	.hidden{
-		visibility:hidden;
-	}
-	.two-p-font{
-		font-family: 'Press Start 2P', cursive;
-		color:white;
-		line-height:150%;
-	}
-	.two-p-font-dark{
-		font-family: 'Press Start 2P', cursive;
-	}
-	.mt-none{
-		margin-top:0 !important;
-	}
-	.mt-10{
-		margin-top:10px;
-	}
-	.dark-camo-bg{
-		background-color:#333c33;
-		opacity:.7;
-	}
-	.med-camo-bg{
-		background-color:#727365;
-		opacity:.7;
-	}
-	.light-camo-bg{
-		background-color:#bfb8a6;
-		opacity:.7;
-	}
-	.game-con{
-		background-color:#D9D9D9;
-		border:1px solid #707070;
-		border-radius:10px;
-		margin-left:10px;
-		margin-right:10px;
-		padding:10px;
-	}
-	.col-c button:hover{
-		transition: box-shadow .3s;
-		box-shadow: 5px 5px 0px black;
-	}
-	.col-c button{
-		display:block;
-		transition: box-shadow .3s;
-		font-family: 'Press Start 2P', cursive;
-		font-size:1rem;
-		color:white;
-		background-color:#333c33;
-		opacity:.7;
-		border: 1px solid #111111;
-		width: 100%;
-		margin-bottom:10px;
-		padding:10px;
-		text-decoration:none;
-	}
-	.row-con{
-		display:flex;
-		width:100%;
-		margin-bottom:10px;
-	}
-	#statusCon{
-		background-color:#222222;
-		opacity:1;
-		padding:10px;
-		font-family: 'Press Start 2P', cursive;
-		color:white;
-		transition:opacity .3s ease-in-out;
-	}
-	#statusCon.fade{
-		opacity:0;
-	}
-	.line-space{
-		margin-bottom:10px;
-	}
-	.image-con{
-		display:flex;
-		flex-direction:column;
-		justify-content:center;
-		align-items:center;
-	}
-	.image-con img{
-		height:100%;
-		max-height:100px;
-		width:auto;
-		padding-top:20px;
-	}
-	.text-con{
-		padding:15px;
-		font-family: 'Press Start 2P', cursive;
-		color:white;
-	}
-	#rpgOptions{
-		opacity: 1;
-	  -webkit-transition: opacity 0.3s ease-in-out;
-	  -moz-transition: opacity 0.3s ease-in-out;
-	  -ms-transition: opacity 0.3s ease-in-out;
-	  -o-transition: opacity 0.3s ease-in-out;
-	  transition: opacity 0.3 ease-in-out;
-	}
-	#rpgOptions .fadein{}
-	
-	@media screen and (min-device-width:768px){
-		.two-p-font-dark{
-			font-size:1rem;
-		}
-		.two-p-font{
-			font-size:1rem;
-		}
-		.rpg-header{
-			max-width:700px;
-			margin-left:auto;
-			margin-right:auto;
-			display:flex;
-			flex-wrap:wrap;
-		}
-		.game-con{
-			max-width:700px;
-			margin-left:auto;
-			margin-right:auto;
-			display:flex;
-			flex-wrap:wrap;
-		}
-		.col-a{
-			margin:10px;
-			width:40%;
-
-		}
-		.col-b{
-			margin:10px;
-			padding:10px;
-			width:50%;
-			margin-right:auto;
-			border: 1px solid #111111;
-
-		}
-		.col-c{
-			margin:10px;
-			padding:10px;
-			width:100%;
-		}
-		#statusCon{
-			border: 1px solid #111111;
-
-		}
-		#statusCon.fade{
-			opacity:0;
-		}
-		.image-con{
-
-		}
-	}
 	@media screen and (max-width:767px){
 		.two-p-font-dark{
 			font-size:.675rem;
@@ -258,6 +107,160 @@ and is in no way endorsed by said user.-->
 			font-size:.675rem;
 		}
 	}
+	@media screen and (min-device-width:768px){
+		.two-p-font-dark{
+			font-size:1rem;
+		}
+		.two-p-font{
+			font-size:1rem;
+		}
+		.rpg-header{
+			max-width:700px;
+			margin-left:auto;
+			margin-right:auto;
+			display:flex;
+			flex-wrap:wrap;
+		}
+		.game-con{
+			max-width:700px;
+			margin-left:auto;
+			margin-right:auto;
+			display:flex;
+			flex-wrap:wrap;
+		}
+		.col-a{
+			margin:10px;
+			width:40%;
+
+		}
+		.col-b{
+			margin:10px;
+			padding:10px;
+			width:50%;
+			margin-right:auto;
+			border: 1px solid #111111;
+
+		}
+		.col-c{
+			margin:10px;
+			padding:10px;
+			width:100%;
+		}
+		#statusCon{
+			border: 1px solid #111111;
+
+		}
+		#statusCon.fade{
+			opacity:0;
+		}
+		.image-con{
+
+		}
+	}
+
+	.hidden{
+		visibility:hidden;
+	}
+	.two-p-font{
+		font-family: 'Press Start 2P', cursive;
+		color:white;
+		line-height:150%;
+	}
+	.two-p-font-dark{
+		font-family: 'Press Start 2P', cursive;
+	}
+	.mt-none{
+		margin-top:0 !important;
+	}
+	.mt-10{
+		margin-top:10px;
+	}
+	.dark-camo-bg{
+		background-color:#333c33;
+		opacity:.7;
+	}
+	.med-camo-bg{
+		background-color:#727365;
+		opacity:.7;
+	}
+	.light-camo-bg{
+		background-color:#bfb8a6;
+		opacity:.7;
+	}
+	.game-con{
+		background-color:#D9D9D9;
+		border:1px solid #707070;
+		border-radius:10px;
+		margin-left:10px;
+		margin-right:10px;
+		padding:10px;
+	}
+	.col-c button:hover{
+		transition: box-shadow .3s;
+		box-shadow: 5px 5px 0px black;
+	}
+	.col-c button{
+		display:block;
+		transition: box-shadow .3s;
+		font-family: 'Press Start 2P', cursive;
+		font-size:1rem;
+		color:white;
+		background-color:#333c33;
+		opacity:.7;
+		border: 1px solid #111111;
+		width: 100%;
+		margin-bottom:10px;
+		padding:10px;
+		text-decoration:none;
+	}
+	.row-con{
+		display:flex;
+		width:100%;
+		margin-bottom:10px;
+	}
+	#statusCon{
+		background-color:#222222;
+		opacity:1;
+		padding:10px;
+		font-family: 'Press Start 2P', cursive;
+		color:white;
+		transition:opacity .3s ease-in-out;
+	}
+	#statusCon.fade{
+		opacity:0;
+	}
+	.line-space{
+		margin-bottom:10px;
+	}
+	.image-con{
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		align-items:center;
+	}
+	.image-con img{
+		height:100%;
+		max-height:100px;
+		width:auto;
+		padding-top:20px;
+	}
+	.text-con{
+		padding:15px;
+		font-family: 'Press Start 2P', cursive;
+		color:white;
+	}
+	#rpgOptions{
+		opacity: 1;
+	  -webkit-transition: opacity 0.3s ease-in-out;
+	  -moz-transition: opacity 0.3s ease-in-out;
+	  -ms-transition: opacity 0.3s ease-in-out;
+	  -o-transition: opacity 0.3s ease-in-out;
+	  transition: opacity 0.3 ease-in-out;
+	}
+	#rpgOptions .fadein{}
+	
+	
+	
 </style>
 <div class="container">
 	<div class="rpg-header">
