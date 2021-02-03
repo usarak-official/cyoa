@@ -1,3 +1,28 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
 <!--This project uses sounds by the following user;
 - LittleRobotSoundFactory ( https://freesound.org/people/LittleRobotSoundFactory/ )
 and is in no way endorsed by said user.-->
@@ -5,518 +30,526 @@ and is in no way endorsed by said user.-->
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
-	@media screen and (max-width:767px){
-		.two-p-font-dark{
-			font-size:.675rem;
-		}
-		.two-p-font{
-			font-size:.675rem;
-		}
-		.rpg-header{
+  @media screen and (max-width:767px){
+    .two-p-font-dark{
+      font-size:.675rem;
+    }
+    .two-p-font{
+      font-size:.675rem;
+    }
+    .rpg-header{
 
-		}
-		.game-con{
-			width:95% !important;
-			margin-left:auto;
-			margin-right:auto;
-			display:flex;
-			flex-direction:row;
-			flex-wrap:wrap;
-			font-size:.675rem;
-		}
-		.col-a{
-			width:100%;
-			display:flex;
-			margin-bottom:10px;
+    }
+    .game-con{
+      width:95% !important;
+      margin-left:auto;
+      margin-right:auto;
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      font-size:.675rem;
+    }
+    .col-a{
+      width:100%;
+      display:flex;
+      margin-bottom:10px;
 
-		}
-		.col-b{
-			border: 1px solid #111111;
-			width:100%;
-			padding:10px;
-			margin-bottom:10px;
-			min-height:100px;
-		}
-		.col-c{
-			width:100%;
-		}
-		#statusCon{
-			border: 1px solid #111111;
-			width:60%;
-			font-size:.675rem;
+    }
+    .col-b{
+      border: 1px solid #111111;
+      width:100%;
+      padding:10px;
+      margin-bottom:10px;
+      min-height:100px;
+    }
+    .col-c{
+      width:100%;
+    }
+    #statusCon{
+      border: 1px solid #111111;
+      width:60%;
+      font-size:.675rem;
 
-		}
-		#statusCon.fade{
-		opacity:0;
-	}
-		.image-con{
-			width:40%;
-		}
-		.col-c button{
-			font-size:.675rem;
-		}
-	}
-	@media screen and (max-device-width:767px){
-		.two-p-font-dark{
-			font-size:1rem;
-		}
-		.two-p-font{
-			font-size:1rem;
-		}
-		.rpg-header{
+    }
+    #statusCon.fade{
+    opacity:0;
+    }
+    .image-con{
+      width:40%;
+    }
+    .col-c button{
+      font-size:.675rem;
+    }
+  }
+  /*@media screen and (max-device-width:767px){
+    .two-p-font-dark{
+      font-size:1rem;
+    }
+    .two-p-font{
+      font-size:1rem;
+    }
+    .rpg-header{
 
-		}
-		.game-con{
-			width:95% !important;
-			margin-left:auto;
-			margin-right:auto;
-			display:flex;
-			flex-direction:row;
-			flex-wrap:wrap;
-			font-size:1rem;
-		}
-		.col-a{
-			width:100%;
-			display:flex;
-			margin-bottom:10px;
+    }
+    .game-con{
+      width:95% !important;
+      margin-left:auto;
+      margin-right:auto;
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      font-size:1rem;
+    }
+    .col-a{
+      width:100%;
+      display:flex;
+      margin-bottom:10px;
 
-		}
-		.col-b{
-			border: 1px solid #111111;
-			width:100%;
-			padding:10px;
-			margin-bottom:10px;
-			min-height:100px;
-		}
-		.col-c{
-			width:100%;
-		}
-		#statusCon{
-			border: 1px solid #111111;
-			width:60%;
-			font-size:1.2rem;
+    }
+    .col-b{
+      border: 1px solid #111111;
+      width:100%;
+      padding:10px;
+      margin-bottom:10px;
+      min-height:100px;
+    }
+    .col-c{
+      width:100%;
+    }
+    #statusCon{
+      border: 1px solid #111111;
+      width:60%;
+      font-size:1.2rem;
 
-		}
-		#statusCon.fade{
-		opacity:0;
-	}
-		.image-con{
-			width:40%;
-		}
-		.col-c button{
-			font-size:1.2rem;
-		}
-	}
-	@media screen and (min-device-width:768px){
-		.two-p-font-dark{
-			font-size:1rem;
-		}
-		.two-p-font{
-			font-size:1rem;
-		}
-		.rpg-header{
-			max-width:700px;
-			margin-left:auto;
-			margin-right:auto;
-			display:flex;
-			flex-wrap:wrap;
-		}
-		.game-con{
-			max-width:700px;
-			margin-left:auto;
-			margin-right:auto;
-			display:flex;
-			flex-wrap:wrap;
-		}
-		.col-a{
-			margin:10px;
-			width:40%;
+    }
+    #statusCon.fade{
+    opacity:0;
+    }
+    .image-con{
+      width:40%;
+    }
+    .col-c button{
+      font-size:1.2rem;
+    }
+    #rpg-options{
+      font-size:1.3rem;
+    }
+  }*/
+  @media screen and (min-device-width:768px){
+    .two-p-font-dark{
+      font-size:1rem;
+    }
+    .two-p-font{
+      font-size:24px;
+    }
+    .rpg-header{
+      max-width:700px;
+      margin-left:auto;
+      margin-right:auto;
+      display:flex;
+      flex-wrap:wrap;
+    }
+    .game-con{
+      max-width:700px;
+      margin-left:auto;
+      margin-right:auto;
+      display:flex;
+      flex-wrap:wrap;
+    }
+    .col-a{
+      margin:10px;
+      width:40%;
 
-		}
-		.col-b{
-			margin:10px;
-			padding:10px;
-			width:50%;
-			margin-right:auto;
-			border: 1px solid #111111;
+    }
+    .col-b{
+      margin:10px;
+      padding:10px;
+      width:50%;
+      margin-right:auto;
+      border: 1px solid #111111;
 
-		}
-		.col-c{
-			margin:10px;
-			padding:10px;
-			width:100%;
-		}
-		#statusCon{
-			border: 1px solid #111111;
+    }
+    .col-c{
+      margin:10px;
+      padding:10px;
+      width:100%;
+    }
+    #statusCon{
+      border: 1px solid #111111;
 
-		}
-		#statusCon.fade{
-			opacity:0;
-		}
-		.image-con{
+    }
+    #statusCon.fade{
+      opacity:0;
+    }
+    .image-con{
 
-		}
-	}
+    }
+  }
 
-	.hidden{
-		visibility:hidden;
-	}
-	.two-p-font{
-		font-family: 'Press Start 2P', cursive;
-		color:white;
-		line-height:150%;
-	}
-	.two-p-font-dark{
-		font-family: 'Press Start 2P', cursive;
-	}
-	.mt-none{
-		margin-top:0 !important;
-	}
-	.mt-10{
-		margin-top:10px;
-	}
-	.dark-camo-bg{
-		background-color:#333c33;
-		opacity:.7;
-	}
-	.med-camo-bg{
-		background-color:#727365;
-		opacity:.7;
-	}
-	.light-camo-bg{
-		background-color:#bfb8a6;
-		opacity:.7;
-	}
-	.game-con{
-		background-color:#D9D9D9;
-		border:1px solid #707070;
-		border-radius:10px;
-		padding:10px;
-	}
-	.col-c button:hover{
-		transition: box-shadow .3s;
-		box-shadow: 5px 5px 0px black;
-	}
-	.col-c button{
-		display:block;
-		transition: box-shadow .3s;
-		font-family: 'Press Start 2P', cursive;
-		font-size:1rem;
-		color:white;
-		background-color:#333c33;
-		opacity:.7;
-		border: 1px solid #111111;
-		width: 100%;
-		margin-bottom:10px;
-		padding:10px;
-		text-decoration:none;
-	}
-	.row-con{
-		display:flex;
-		width:100%;
-		margin-bottom:10px;
-	}
-	#statusCon{
-		background-color:#222222;
-		opacity:1;
-		padding:10px;
-		font-family: 'Press Start 2P', cursive;
-		color:white;
-		transition:opacity .3s ease-in-out;
-	}
-	#statusCon.fade{
-		opacity:0;
-	}
-	.line-space{
-		margin-bottom:10px;
-	}
-	.image-con{
-		display:flex;
-		flex-direction:column;
-		justify-content:center;
-		align-items:center;
-	}
-	.image-con img{
-		height:100%;
-		max-height:100px;
-		width:auto;
-		padding-top:20px;
-	}
-	.text-con{
-		padding:15px;
-		font-family: 'Press Start 2P', cursive;
-		color:white;
-	}
-	#rpgOptions{
-		opacity: 1;
-	  -webkit-transition: opacity 0.3s ease-in-out;
-	  -moz-transition: opacity 0.3s ease-in-out;
-	  -ms-transition: opacity 0.3s ease-in-out;
-	  -o-transition: opacity 0.3s ease-in-out;
-	  transition: opacity 0.3 ease-in-out;
-	}
-	#rpgOptions .fadein{}
-	
-	
-	
+  .hidden{
+    visibility:hidden;
+  }
+  .two-p-font{
+    font-family: 'Press Start 2P', cursive;
+    color:white;
+    line-height:150%;
+  }
+  .two-p-font-dark{
+    font-family: 'Press Start 2P', cursive;
+  }
+  .mt-none{
+    margin-top:0 !important;
+  }
+  .mt-10{
+    margin-top:10px;
+  }
+  .dark-camo-bg{
+    background-color:#333c33;
+    opacity:.7;
+  }
+  .med-camo-bg{
+    background-color:#727365;
+    opacity:.7;
+  }
+  .light-camo-bg{
+    background-color:#bfb8a6;
+    opacity:.7;
+  }
+  .game-con{
+    background-color:#D9D9D9;
+    border:1px solid #707070;
+    border-radius:10px;
+    padding:10px;
+  }
+  .col-c button:hover{
+    transition: box-shadow .3s;
+    box-shadow: 5px 5px 0px black;
+  }
+  .col-c button{
+    display:block;
+    transition: box-shadow .3s;
+    font-family: 'Press Start 2P', cursive;
+    font-size:1rem;
+    color:white;
+    background-color:#333c33;
+    opacity:.7;
+    border: 1px solid #111111;
+    width: 100%;
+    margin-bottom:10px;
+    padding:10px;
+    text-decoration:none;
+  }
+  .row-con{
+    display:flex;
+    width:100%;
+    margin-bottom:10px;
+  }
+  #statusCon{
+    background-color:#222222;
+    opacity:1;
+    padding:10px;
+    font-family: 'Press Start 2P', cursive;
+    color:white;
+    transition:opacity .3s ease-in-out;
+  }
+  #statusCon.fade{
+    opacity:0;
+  }
+  .line-space{
+    margin-bottom:10px;
+  }
+  .image-con{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+  .image-con img{
+    height:100%;
+    max-height:100px;
+    width:auto;
+    padding-top:20px;
+  }
+  .text-con{
+    padding:15px;
+    font-family: 'Press Start 2P', cursive;
+    color:white;
+  }
+  #rpgOptions{
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out;
+    -ms-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3 ease-in-out;
+  }
+  #rpgOptions .fadein{}
+  
+  
+  
 </style>
 <div class="container">
-	<div class="rpg-header">
-		<h1>Choose your Weekend Adventure</h1>
-	</div>
-	<section class="game-con">
-		<section class="col-a">
-			<div id="statusCon">
-				<div class="line-space" id="HP">HP: <span id="hp_js"></span></div>
-				<div class="line-space" id="INT">Reasoning: <span id="int_js"></span></div>
-				<div class="line-space" id="PER">Perception: <span id="per_js"></span></div>
-				<div class="line-space" id="FUN">Fun: <span id="fun_js"></span></div>
-				<div>$ <span id="usd_js"></span></div>
-			</div>
-			<div class="image-con">
-				<img
-					src="walk_1.gif"
-					alt="A video game character walking">
-				<div class="two-p-font-dark mt-10">
-					<span id="rpg-rank"></span>
-					<span id="rpg-name"></span>
-				</div>
-			</div>
-		</section>
-		<section class="col-b two-p-font med-camo-bg" id="rpgDialog">
-		</section>
-		<div class="col-c" id="rpgOptions">
-			<button class="rpgBtns" id="b1" data-choice=""></button>
-			<button class="rpgBtns" id="b2" data-choice=""></button>
-			<button class="rpgBtns" id="b3" data-choice=""></button>
-		</div>
-	</section>
+  <div class="rpg-header">
+    <h1>Choose your Weekend Adventure</h1>
+  </div>
+  <section class="game-con">
+    <section class="col-a">
+      <div id="statusCon">
+        <div class="line-space" id="HP">HP: <span id="hp_js"></span></div>
+        <div class="line-space" id="INT">Reasoning: <span id="int_js"></span></div>
+        <div class="line-space" id="PER">Perception: <span id="per_js"></span></div>
+        <div class="line-space" id="FUN">Fun: <span id="fun_js"></span></div>
+        <div>$ <span id="usd_js"></span></div>
+      </div>
+      <div class="image-con">
+        <img
+          src="walk_1.gif"
+          alt="A video game character walking">
+        <div class="two-p-font-dark mt-10">
+          <span id="rpg-rank"></span>
+          <span id="rpg-name"></span>
+        </div>
+      </div>
+    </section>
+    <section class="col-b two-p-font med-camo-bg" id="rpgDialog">
+    </section>
+    <div class="col-c" id="rpgOptions">
+      <button class="rpgBtns" id="b1" data-choice=""></button>
+      <button class="rpgBtns" id="b2" data-choice=""></button>
+      <button class="rpgBtns" id="b3" data-choice=""></button>
+    </div>
+  </section>
 </div>
 <script type="text/javascript">
-	// Source data
-	var statValues = [50, 25, 20, 5, 200];
-	var clicker = false;
-	var rpgDialog = document.getElementById('rpgDialog');
-	var rpgOptions = document.getElementById('rpgOptions');
-	var statCon = document.getElementById('statusCon');
+  // Source data
+  var statValues = [50, 25, 20, 5, 200];
+  var clicker = false;
+  var rpgDialog = document.getElementById('rpgDialog');
+  var rpgOptions = document.getElementById('rpgOptions');
+  var statCon = document.getElementById('statusCon');
 
-	//Sound effects
+  //Sound effects
 
-	
-	const loseAudio = new Audio('https://usarak-official.github.io/cyoa/270329__littlerobotsoundfactory__jingle-lose-00.mp3');
-	const winAudio = new Audio('https://usarak-official.github.io/cyoa/270330__littlerobotsoundfactory__jingle-achievement-01.mp3');
-	const collectAudio = new Audio('https://usarak-official.github.io/cyoa/270303__littlerobotsoundfactory__collect-point-01.mp3');
-	const hitAudio = new Audio('https://usarak-official.github.io/cyoa/270338__littlerobotsoundfactory__open-01.mp3');
-	const selectAudio = new Audio('http://usarak-official.github.io/cyoa/sfx_menu_select1.mp3');
-	const clickAudio = new Audio('https://usarak-official.github.io/cyoa/270324__littlerobotsoundfactory__menu-navigate-00.wav');
+  
+  const loseAudio = new Audio('https://usarak-official.github.io/cyoa/270329__littlerobotsoundfactory__jingle-lose-00.mp3');
+  const winAudio = new Audio('https://usarak-official.github.io/cyoa/270330__littlerobotsoundfactory__jingle-achievement-01.mp3');
+  const collectAudio = new Audio('https://usarak-official.github.io/cyoa/270303__littlerobotsoundfactory__collect-point-01.mp3');
+  const hitAudio = new Audio('https://usarak-official.github.io/cyoa/270338__littlerobotsoundfactory__open-01.mp3');
+  const selectAudio = new Audio('http://usarak-official.github.io/cyoa/sfx_menu_select1.mp3');
+  const clickAudio = new Audio('https://usarak-official.github.io/cyoa/270324__littlerobotsoundfactory__menu-navigate-00.wav');
 
-	//Anims
-	function updateStats() {
-		document.getElementById('hp_js').innerText = statValues[0];
-		document.getElementById('int_js').innertext = statValues[1];
-		document.getElementById('per_js').innerText = statValues[2];
-		document.getElementById('fun_js').innerText = statValues[3];
-		document.getElementById('usd_js').innerText = statValues[4];
-	}
+  //Anims
+  function updateStats() {
+    document.getElementById('hp_js').innerText = statValues[0];
+    document.getElementById('int_js').innertext = statValues[1];
+    document.getElementById('per_js').innerText = statValues[2];
+    document.getElementById('fun_js').innerText = statValues[3];
+    document.getElementById('usd_js').innerText = statValues[4];
+  }
 
-	// Functions
-	function disableClick() {
-		clicker = false;
-	}
-	function enableClick() {
-		clicker = true;
-	}
-	function flashStats() {
-		statCon.classList.add('fade');
-		setTimeout(function() {statCon.classList.remove('fade');}, 300);
-	}
-	// These are functions that affect body text
-	function pLoading() {
-		// var pMake = document.createElement("p");
-		// pMake.textContent = "...loading...";
-		rpgDialog.textContent = "...loading...";
-	}
-	function xDialog() {
-		rpgDialog.textContent = " ";
-	}
-	function sn0Dia() {
-		var pMake0 = document.createElement("p");
-		var pMake1 = document.createElement("p");
-		pMake0.textContent = "It's Saturday. This has been a long work week, and you deserve to take some time to unwind. There are events on the Outdoor Adventure Program website, and on the BOSS Facebook feed. You can also go out drinking."
-		pMake1.textContent = "What would you like to do?"
-		rpgDialog.appendChild(pMake0);
-		setTimeout(function() {rpgDialog.appendChild(pMake1);}, 2500);
-		optSet0();
-	}
-	function sn1Dia(){
-		var pMake = document.createElement("p");
-		var pMake2 = document.createElement("p");
-		pMake.textContent = "There's an e-sports gaming tournament today. Free refreshments for spectators; $35 to enter. If you win the tournament, there's a $100 prize."
-		pMake2.textContent = "What do you want to do?"
-		rpgDialog.appendChild(pMake);
-		setTimeout(function() {rpgDialog.appendChild(pMake2);}, 2500);
-	}
+  // Functions
+  function disableClick() {
+    clicker = false;
+  }
+  function enableClick() {
+    clicker = true;
+  }
+  function flashStats() {
+    statCon.classList.add('fade');
+    setTimeout(function() {statCon.classList.remove('fade');}, 300);
+  }
+  // These are functions that affect body text
+  function pLoading() {
+    // var pMake = document.createElement("p");
+    // pMake.textContent = "...loading...";
+    rpgDialog.textContent = "...loading...";
+  }
+  function xDialog() {
+    rpgDialog.textContent = " ";
+  }
+  function sn0Dia() {
+    var pMake0 = document.createElement("p");
+    var pMake1 = document.createElement("p");
+    pMake0.textContent = "It's Saturday. This has been a long work week, and you deserve to take some time to unwind. There are events on the Outdoor Adventure Program website, and on the BOSS Facebook feed. You can also go out drinking."
+    pMake1.textContent = "What would you like to do?"
+    rpgDialog.appendChild(pMake0);
+    setTimeout(function() {rpgDialog.appendChild(pMake1);}, 2500);
+    optSet0();
+  }
+  function sn1Dia(){
+    var pMake = document.createElement("p");
+    var pMake2 = document.createElement("p");
+    pMake.textContent = "There's an e-sports gaming tournament today. Free refreshments for spectators; $35 to enter. If you win the tournament, there's a $100 prize."
+    pMake2.textContent = "What do you want to do?"
+    rpgDialog.appendChild(pMake);
+    setTimeout(function() {rpgDialog.appendChild(pMake2);}, 2500);
+  }
 
-	function sn2Dia(){
-		var pMake = document.createElement("p");
-		var pMake2 = document.createElement("p");
-		pMake.textContent = "OAP has a snowmachine ride in Willow, and fat tire bike rentals."
-		pMake2.textContent = "The snowmachine ride is $99, and looks like a lot of fun. Fat tire rentals are $5, look like both fun and a workout. What would you like to do?"
-		rpgDialog.appendChild(pMake);
-		setTimeout(function() {rpgDialog.appendChild(pMake2);}, 2500);
-	}
+  function sn2Dia(){
+    var pMake = document.createElement("p");
+    var pMake2 = document.createElement("p");
+    pMake.textContent = "OAP has a snowmachine ride in Willow, and fat tire bike rentals."
+    pMake2.textContent = "The snowmachine ride is $99, and looks like a lot of fun. Fat tire rentals are $5, look like both fun and a workout. What would you like to do?"
+    rpgDialog.appendChild(pMake);
+    setTimeout(function() {rpgDialog.appendChild(pMake2);}, 2500);
+  }
 
-	function sn3Dia(){
-		var pMake = document.createElement("p");
-		var pMake2 = document.createElement("p");
-		pMake.textContent = "Some friends are going out drinking. You look around; everyone is over 21."
-		pMake2.textContent = "You know there should be a designated driver, or a plan to get home. "
-		rpgDialog.appendChild(pMake);
-	}
+  function sn3Dia(){
+    var pMake = document.createElement("p");
+    var pMake2 = document.createElement("p");
+    pMake.textContent = "Some friends are going out drinking. You look around; everyone is over 21."
+    pMake2.textContent = "You know there should be a designated driver, or a plan to get home. "
+    rpgDialog.appendChild(pMake);
+  }
 
-	function sn1_1DiaWin(){
-		disableClick();
-		xDialog();
-		winAudio.play();
-		let pMake  = document.createElement("p");
-		let pMake1 = document.createElement("p");
-		let pMake2 = document.createElement("p");
-		pMake.textContent = "Winner!";
-		pMake1.textContent = "+$100  +Fun";
-		statValues[4] = 165;
-		statValues[3] = 25;
-		updateStats();
-		pMake2.textContent = "You won the tournament! The competition was fierce, but your finely-honed reflexes took the day. As you exit the building with a grin on your face, Sgt. Binky gives you a thumbs-up. "
-		rpgDialog.appendChild(pMake);
-		setTimeout(function() {
-			collectAudio.play();
-			rpgDialog.appendChild(pMake1);
-		}, 2000);
-		setTimeout(function() {
-			rpgDialog.appendChild(pMake2);
-		}, 3000);
-		optSetReset();
-		setTimeout(enableClick, 3000);
-	}
-	function sn1_1DiaLose(){
-		disableClick();
-		xDialog();
-		hitAudio.play();
-		let pMake  = document.createElement("p");
-		let pMake2  = document.createElement("p");
-		statValues[4] -=35;
-		statValues[3] +=20;
-		updateStats();
-		pMake.textContent = "You took second place, but it was close.";
-		pMake2.textContent = "It really looked like you were going to win, but Sgt. Binky took the lead in the last round, despite having paws instead of hands. \"Next time,\" you say to yourself."
-		rpgDialog.appendChild(pMake);
-		optSetReset();
-		setTimeout(enableClick, 1000);
-	}
+  function sn1_1DiaWin(){
+    disableClick();
+    xDialog();
+    winAudio.play();
+    let pMake  = document.createElement("p");
+    let pMake1 = document.createElement("p");
+    let pMake2 = document.createElement("p");
+    pMake.textContent = "Winner!";
+    pMake1.textContent = "+$100  +Fun";
+    statValues[4] = 165;
+    statValues[3] = 25;
+    updateStats();
+    pMake2.textContent = "You won the tournament! The competition was fierce, but your finely-honed reflexes took the day. As you exit the building with a grin on your face, Sgt. Binky gives you a thumbs-up. "
+    rpgDialog.appendChild(pMake);
+    setTimeout(function() {
+      collectAudio.play();
+      rpgDialog.appendChild(pMake1);
+    }, 2000);
+    setTimeout(function() {
+      rpgDialog.appendChild(pMake2);
+    }, 3000);
+    optSetReset();
+    setTimeout(enableClick, 3000);
+  }
+  function sn1_1DiaLose(){
+    disableClick();
+    xDialog();
+    hitAudio.play();
+    let pMake  = document.createElement("p");
+    let pMake2  = document.createElement("p");
+    statValues[4] -=35;
+    statValues[3] +=20;
+    updateStats();
+    pMake.textContent = "You took second place, but it was close.";
+    pMake2.textContent = "It really looked like you were going to win, but Sgt. Binky took the lead in the last round, despite having paws instead of hands. \"Next time,\" you say to yourself."
+    rpgDialog.appendChild(pMake);
+    optSetReset();
+    setTimeout(enableClick, 1000);
+  }
 
-	//Sets of buttons
-	function optSetReset(){
-		var b1 = document.getElementById("b1");
-		var b2 = document.getElementById("b2");
-		var b3 = document.getElementById("b3");
-		b2.classList.add("hidden");
-		b3.classList.add("hidden");
-		b1.textContent = "Play Again"
-		b1.setAttribute("data-choice", "0");
-	}
-	function optSet0(){
-		var b1 = document.getElementById("b1");
-		var b2 = document.getElementById("b2");
-		var b3 = document.getElementById("b3");
-		b1.classList.remove("hidden");
-		b2.classList.remove("hidden");
-		b3.classList.remove("hidden");
-		b1.textContent = "Check the BOSS Facebook page for events";
-		b1.setAttribute("data-choice", "1");
-		b2.textContent = "Take a look at what the Outdoor Adventure Program is offering";
-		b2.setAttribute("data-choice", "2");
-		b3.textContent = "Go out for a drink";
-		b3.setAttribute("data-choice", "3");
-	}
-	function optSet1(){
-		var b1 = document.getElementById("b1");
-		var b2 = document.getElementById("b2");
-		var b3 = document.getElementById("b3");
-		b1.textContent = "Enter the game tournament";
-		b1.setAttribute("data-choice", "4");
-		b2.textContent = "Watch the tournament";
-		b2.setAttribute("data-choice", "5");
-		b3.textContent = "Do something else";
-		b3.setAttribute("data-choice", "6");
-	}
+  //Sets of buttons
+  function optSetReset(){
+    var b1 = document.getElementById("b1");
+    var b2 = document.getElementById("b2");
+    var b3 = document.getElementById("b3");
+    b2.classList.add("hidden");
+    b3.classList.add("hidden");
+    b1.textContent = "Play Again"
+    b1.setAttribute("data-choice", "0");
+  }
+  function optSet0(){
+    var b1 = document.getElementById("b1");
+    var b2 = document.getElementById("b2");
+    var b3 = document.getElementById("b3");
+    b1.classList.remove("hidden");
+    b2.classList.remove("hidden");
+    b3.classList.remove("hidden");
+    b1.textContent = "Check the BOSS Facebook page for events";
+    b1.setAttribute("data-choice", "1");
+    b2.textContent = "Take a look at what the Outdoor Adventure Program is offering";
+    b2.setAttribute("data-choice", "2");
+    b3.textContent = "Go out for a drink";
+    b3.setAttribute("data-choice", "3");
+  }
+  function optSet1(){
+    var b1 = document.getElementById("b1");
+    var b2 = document.getElementById("b2");
+    var b3 = document.getElementById("b3");
+    b1.textContent = "Enter the game tournament";
+    b1.setAttribute("data-choice", "4");
+    b2.textContent = "Watch the tournament";
+    b2.setAttribute("data-choice", "5");
+    b3.textContent = "Do something else";
+    b3.setAttribute("data-choice", "6");
+  }
 
 
-	function initialize_game() {
-		disableClick();
-		pLoading();
-		statValues = [50,25,20,5,200];
-		updateStats();
-		setTimeout(xDialog, 1000);
-		setTimeout(sn0Dia, 2000);
-		optSet0();
-		setTimeout(enableClick, 4000);
-	}
+  function initialize_game() {
+    disableClick();
+    pLoading();
+    statValues = [50,25,20,5,200];
+    updateStats();
+    setTimeout(xDialog, 1000);
+    setTimeout(sn0Dia, 2000);
+    optSet0();
+    setTimeout(enableClick, 4000);
+  }
 
-	function snDiaKickoff(){
-		disableClick();
-		xDialog();
-		pLoading();
-		setTimeout(xDialog, 1000);
-	}
+  function snDiaKickoff(){
+    disableClick();
+    xDialog();
+    pLoading();
+    setTimeout(xDialog, 1000);
+  }
 
-	// Event listener that controls everything that happens
+  // Event listener that controls everything that happens
 
-	document.getElementById('rpgOptions').addEventListener("click", function(e) {
-		if(e.target.getAttribute('data-choice') === "0"){
-			if (clicker == true){
-				clickAudio.play();
-				snDiaKickoff();
-				initialize_game();
-			}
-		};
-		if(e.target.getAttribute('data-choice') === "1"){
-			if (clicker == true){
-				clickAudio.play();
-				snDiaKickoff();
-				setTimeout(sn1Dia, 2000);
-				optSet1();
-				setTimeout(enableClick, 4000);
-			}
-		};
-		if(e.target.getAttribute('data-choice') === "2"){
-			if (clicker===true){
-				clickAudio.play();
-				snDiaKickoff();
-				setTimeout(sn2Dia, 2000);
-				optSet2();
-				setTimeout(enableClick, 4000);
-			}
-		}
-		if(e.target.getAttribute('data-choice') === "3"){
-			if (clicker===true){
-				clickAudio.play();
-				initialize_game();
-			}
-		}
-		if(e.target.getAttribute('data-choice') === "4"){
-			if (clicker == true){
-				var randomSeed = Math.random();
-				if (randomSeed <= 0.5)
-				{
-					sn1_1DiaWin();
-				}
-				else{
-					sn1_1DiaLose();
-				}
-			}
-		};
+  document.getElementById('rpgOptions').addEventListener("click", function(e) {
+    if(e.target.getAttribute('data-choice') === "0"){
+      if (clicker == true){
+        clickAudio.play();
+        snDiaKickoff();
+        initialize_game();
+      }
+    };
+    if(e.target.getAttribute('data-choice') === "1"){
+      if (clicker == true){
+        clickAudio.play();
+        snDiaKickoff();
+        setTimeout(sn1Dia, 2000);
+        optSet1();
+        setTimeout(enableClick, 4000);
+      }
+    };
+    if(e.target.getAttribute('data-choice') === "2"){
+      if (clicker===true){
+        clickAudio.play();
+        snDiaKickoff();
+        setTimeout(sn2Dia, 2000);
+        optSet2();
+        setTimeout(enableClick, 4000);
+      }
+    }
+    if(e.target.getAttribute('data-choice') === "3"){
+      if (clicker===true){
+        clickAudio.play();
+        initialize_game();
+      }
+    }
+    if(e.target.getAttribute('data-choice') === "4"){
+      if (clicker == true){
+        var randomSeed = Math.random();
+        if (randomSeed <= 0.5)
+        {
+          sn1_1DiaWin();
+        }
+        else{
+          sn1_1DiaLose();
+        }
+      }
+    };
 
-	});
+  });
 
-	window.onload = initialize_game;
+  window.onload = initialize_game;
 </script>
+
+
+</body>
+
+</html>
