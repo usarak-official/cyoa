@@ -106,7 +106,7 @@ and is in no way endorsed by said user.-->
 	}
 	#rpgOptions .fadein{}
 	
-	@media screen and (min-width:768px){
+	@media screen and (min-device-width:768px){
 		.two-p-font-dark{
 			font-size:1rem;
 		}
@@ -167,6 +167,58 @@ and is in no way endorsed by said user.-->
 
 		}
 		.game-con{
+			width:95% !important;
+			margin-left:auto;
+			margin-right:auto;
+			display:flex;
+			flex-direction:row;
+			flex-wrap:wrap;
+			font-size:.675rem;
+		}
+		.col-a{
+			width:100%;
+			display:flex;
+			margin-bottom:10px;
+
+		}
+		.col-b{
+			border: 1px solid #111111;
+			width:100%;
+			padding:10px;
+			margin-bottom:10px;
+			min-height:100px;
+		}
+		.col-c{
+			width:100%;
+		}
+		#statusCon{
+			border: 1px solid #111111;
+			width:60%;
+			font-size:.675rem;
+
+		}
+		#statusCon.fade{
+		opacity:0;
+	}
+		.image-con{
+			width:40%;
+		}
+		.col-c button{
+			font-size:.675rem;
+		}
+	}
+	@media screen and (max-device-width:767px){
+		.two-p-font-dark{
+			font-size:.675rem;
+		}
+		.two-p-font{
+			font-size:.675rem;
+		}
+		.rpg-header{
+
+		}
+		.game-con{
+			width:95% !important;
 			margin-left:auto;
 			margin-right:auto;
 			display:flex;
