@@ -7,17 +7,6 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
-
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -32,10 +21,10 @@ and is in no way endorsed by said user.-->
 <style>
   @media screen and (max-width:767px){
     .two-p-font-dark{
-      font-size:.675rem;
+      font-size:1rem;
     }
     .two-p-font{
-      font-size:.675rem;
+      font-size:1rem;
     }
     .rpg-header{
 
@@ -68,79 +57,29 @@ and is in no way endorsed by said user.-->
     #statusCon{
       border: 1px solid #111111;
       width:60%;
-      font-size:.675rem;
+      font-size:1rem;
 
     }
     #statusCon.fade{
     opacity:0;
     }
-    .image-con{
+    .imageCon{
       width:40%;
     }
     .col-c button{
       font-size:.675rem;
+    }
+    .rpg-header{
+      display:none;
     }
   }
-  /*@media screen and (max-device-width:767px){
-    .two-p-font-dark{
-      font-size:1rem;
-    }
-    .two-p-font{
-      font-size:1rem;
-    }
-    .rpg-header{
 
-    }
-    .game-con{
-      width:95% !important;
-      margin-left:auto;
-      margin-right:auto;
-      display:flex;
-      flex-direction:row;
-      flex-wrap:wrap;
-      font-size:1rem;
-    }
-    .col-a{
-      width:100%;
-      display:flex;
-      margin-bottom:10px;
-
-    }
-    .col-b{
-      border: 1px solid #111111;
-      width:100%;
-      padding:10px;
-      margin-bottom:10px;
-      min-height:100px;
-    }
-    .col-c{
-      width:100%;
-    }
-    #statusCon{
-      border: 1px solid #111111;
-      width:60%;
-      font-size:1.2rem;
-
-    }
-    #statusCon.fade{
-    opacity:0;
-    }
-    .image-con{
-      width:40%;
-    }
-    .col-c button{
-      font-size:1.2rem;
-    }
-    #rpg-options{
-      font-size:1.3rem;
-    }
-  }*/
   @media screen and (min-device-width:768px){
     .two-p-font-dark{
       font-size:1rem;
     }
     .two-p-font{
-      font-size:24px;
+      font-size:.85rem;
     }
     .rpg-header{
       max-width:700px;
@@ -181,7 +120,7 @@ and is in no way endorsed by said user.-->
     #statusCon.fade{
       opacity:0;
     }
-    .image-con{
+    .imageCon{
 
     }
   }
@@ -258,13 +197,13 @@ and is in no way endorsed by said user.-->
   .line-space{
     margin-bottom:10px;
   }
-  .image-con{
+  .imageCon{
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
   }
-  .image-con img{
+  .imageCon img{
     height:100%;
     max-height:100px;
     width:auto;
@@ -275,7 +214,7 @@ and is in no way endorsed by said user.-->
     font-family: 'Press Start 2P', cursive;
     color:white;
   }
-  #rpgOptions{
+  #cyoa.data.rpgOptions{
     opacity: 1;
     -webkit-transition: opacity 0.3s ease-in-out;
     -moz-transition: opacity 0.3s ease-in-out;
@@ -283,15 +222,12 @@ and is in no way endorsed by said user.-->
     -o-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3 ease-in-out;
   }
-  #rpgOptions .fadein{}
+  #cyoa.data.rpgOptions .fadein{}
   
   
   
 </style>
 <div class="container">
-  <div class="rpg-header">
-    <h1>Choose your Weekend Adventure</h1>
-  </div>
   <section class="game-con">
     <section class="col-a">
       <div id="statusCon">
@@ -301,7 +237,7 @@ and is in no way endorsed by said user.-->
         <div class="line-space" id="FUN">Fun: <span id="fun_js"></span></div>
         <div>$ <span id="usd_js"></span></div>
       </div>
-      <div class="image-con">
+      <div class="imageCon">
         <img
           src="walk_1.gif"
           alt="A video game character walking">
@@ -321,232 +257,302 @@ and is in no way endorsed by said user.-->
   </section>
 </div>
 <script type="text/javascript">
-  // Source data
-  var statValues = [50, 25, 20, 5, 200];
-  var clicker = false;
-  var rpgDialog = document.getElementById('rpgDialog');
-  var rpgOptions = document.getElementById('rpgOptions');
-  var statCon = document.getElementById('statusCon');
+  (function (){
+    // namespace var
+    var cyoa = {};
 
-  //Sound effects
+    //data vars
+    cyoa.data = {};
+    cyoa.data.statValues = [50, 25, 20, 5, 200];
+    cyoa.data.clicker = false;
+    cyoa.data.rpgDialog = document.getElementById('rpgDialog');
+    cyoa.data.rpgOptions = document.getElementById('rpgOptions');
+    cyoa.data.statCon = document.getElementById('statusCon');
 
-  
-  const loseAudio = new Audio('https://usarak-official.github.io/cyoa/270329__littlerobotsoundfactory__jingle-lose-00.mp3');
-  const winAudio = new Audio('https://usarak-official.github.io/cyoa/270330__littlerobotsoundfactory__jingle-achievement-01.mp3');
-  const collectAudio = new Audio('https://usarak-official.github.io/cyoa/270303__littlerobotsoundfactory__collect-point-01.mp3');
-  const hitAudio = new Audio('https://usarak-official.github.io/cyoa/270338__littlerobotsoundfactory__open-01.mp3');
-  const selectAudio = new Audio('http://usarak-official.github.io/cyoa/sfx_menu_select1.mp3');
-  const clickAudio = new Audio('https://usarak-official.github.io/cyoa/270324__littlerobotsoundfactory__menu-navigate-00.wav');
+    //sound vars
+    cyoa.sounds = {};
+    cyoa.sounds.loseAudio = new Audio('https://usarak-official.github.io/cyoa/270329__littlerobotsoundfactory__jingle-lose-00.mp3');
+    cyoa.sounds.winAudio = new Audio('https://usarak-official.github.io/cyoa/270330__littlerobotsoundfactory__jingle-achievement-01.mp3');
+    cyoa.sounds.collectAudio = new Audio('https://usarak-official.github.io/cyoa/270303__littlerobotsoundfactory__collect-point-01.mp3');
+    cyoa.sounds.hitAudio = new Audio('https://usarak-official.github.io/cyoa/270338__littlerobotsoundfactory__open-01.mp3');
+    cyoa.sounds.selectAudio = new Audio('http://usarak-official.github.io/cyoa/sfx_menu_select1.mp3');
+    cyoa.sounds.clickAudio = new Audio('https://usarak-official.github.io/cyoa/270324__littlerobotsoundfactory__menu-navigate-00.wav');
+    cyoa.sounds.pewAudio = new Audio('https://usarak-official.github.io/cyoa/270306__littlerobotsoundfactory__explosion-02.wav');
 
-  //Anims
-  function updateStats() {
-    document.getElementById('hp_js').innerText = statValues[0];
-    document.getElementById('int_js').innertext = statValues[1];
-    document.getElementById('per_js').innerText = statValues[2];
-    document.getElementById('fun_js').innerText = statValues[3];
-    document.getElementById('usd_js').innerText = statValues[4];
-  }
-
-  // Functions
-  function disableClick() {
-    clicker = false;
-  }
-  function enableClick() {
-    clicker = true;
-  }
-  function flashStats() {
-    statCon.classList.add('fade');
-    setTimeout(function() {statCon.classList.remove('fade');}, 300);
-  }
-  // These are functions that affect body text
-  function pLoading() {
-    // var pMake = document.createElement("p");
-    // pMake.textContent = "...loading...";
-    rpgDialog.textContent = "...loading...";
-  }
-  function xDialog() {
-    rpgDialog.textContent = " ";
-  }
-  function sn0Dia() {
-    var pMake0 = document.createElement("p");
-    var pMake1 = document.createElement("p");
-    pMake0.textContent = "It's Saturday. This has been a long work week, and you deserve to take some time to unwind. There are events on the Outdoor Adventure Program website, and on the BOSS Facebook feed. You can also go out drinking."
-    pMake1.textContent = "What would you like to do?"
-    rpgDialog.appendChild(pMake0);
-    setTimeout(function() {rpgDialog.appendChild(pMake1);}, 2500);
-    optSet0();
-  }
-  function sn1Dia(){
-    var pMake = document.createElement("p");
-    var pMake2 = document.createElement("p");
-    pMake.textContent = "There's an e-sports gaming tournament today. Free refreshments for spectators; $35 to enter. If you win the tournament, there's a $100 prize."
-    pMake2.textContent = "What do you want to do?"
-    rpgDialog.appendChild(pMake);
-    setTimeout(function() {rpgDialog.appendChild(pMake2);}, 2500);
-  }
-
-  function sn2Dia(){
-    var pMake = document.createElement("p");
-    var pMake2 = document.createElement("p");
-    pMake.textContent = "OAP has a snowmachine ride in Willow, and fat tire bike rentals."
-    pMake2.textContent = "The snowmachine ride is $99, and looks like a lot of fun. Fat tire rentals are $5, look like both fun and a workout. What would you like to do?"
-    rpgDialog.appendChild(pMake);
-    setTimeout(function() {rpgDialog.appendChild(pMake2);}, 2500);
-  }
-
-  function sn3Dia(){
-    var pMake = document.createElement("p");
-    var pMake2 = document.createElement("p");
-    pMake.textContent = "Some friends are going out drinking. You look around; everyone is over 21."
-    pMake2.textContent = "You know there should be a designated driver, or a plan to get home. "
-    rpgDialog.appendChild(pMake);
-  }
-
-  function sn1_1DiaWin(){
-    disableClick();
-    xDialog();
-    winAudio.play();
-    let pMake  = document.createElement("p");
-    let pMake1 = document.createElement("p");
-    let pMake2 = document.createElement("p");
-    pMake.textContent = "Winner!";
-    pMake1.textContent = "+$100  +Fun";
-    statValues[4] = 165;
-    statValues[3] = 25;
-    updateStats();
-    pMake2.textContent = "You won the tournament! The competition was fierce, but your finely-honed reflexes took the day. As you exit the building with a grin on your face, Sgt. Binky gives you a thumbs-up. "
-    rpgDialog.appendChild(pMake);
-    setTimeout(function() {
-      collectAudio.play();
-      rpgDialog.appendChild(pMake1);
-    }, 2000);
-    setTimeout(function() {
-      rpgDialog.appendChild(pMake2);
-    }, 3000);
-    optSetReset();
-    setTimeout(enableClick, 3000);
-  }
-  function sn1_1DiaLose(){
-    disableClick();
-    xDialog();
-    hitAudio.play();
-    let pMake  = document.createElement("p");
-    let pMake2  = document.createElement("p");
-    statValues[4] -=35;
-    statValues[3] +=20;
-    updateStats();
-    pMake.textContent = "You took second place, but it was close.";
-    pMake2.textContent = "It really looked like you were going to win, but Sgt. Binky took the lead in the last round, despite having paws instead of hands. \"Next time,\" you say to yourself."
-    rpgDialog.appendChild(pMake);
-    optSetReset();
-    setTimeout(enableClick, 1000);
-  }
-
-  //Sets of buttons
-  function optSetReset(){
-    var b1 = document.getElementById("b1");
-    var b2 = document.getElementById("b2");
-    var b3 = document.getElementById("b3");
-    b2.classList.add("hidden");
-    b3.classList.add("hidden");
-    b1.textContent = "Play Again"
-    b1.setAttribute("data-choice", "0");
-  }
-  function optSet0(){
-    var b1 = document.getElementById("b1");
-    var b2 = document.getElementById("b2");
-    var b3 = document.getElementById("b3");
-    b1.classList.remove("hidden");
-    b2.classList.remove("hidden");
-    b3.classList.remove("hidden");
-    b1.textContent = "Check the BOSS Facebook page for events";
-    b1.setAttribute("data-choice", "1");
-    b2.textContent = "Take a look at what the Outdoor Adventure Program is offering";
-    b2.setAttribute("data-choice", "2");
-    b3.textContent = "Go out for a drink";
-    b3.setAttribute("data-choice", "3");
-  }
-  function optSet1(){
-    var b1 = document.getElementById("b1");
-    var b2 = document.getElementById("b2");
-    var b3 = document.getElementById("b3");
-    b1.textContent = "Enter the game tournament";
-    b1.setAttribute("data-choice", "4");
-    b2.textContent = "Watch the tournament";
-    b2.setAttribute("data-choice", "5");
-    b3.textContent = "Do something else";
-    b3.setAttribute("data-choice", "6");
-  }
-
-
-  function initialize_game() {
-    disableClick();
-    pLoading();
-    statValues = [50,25,20,5,200];
-    updateStats();
-    setTimeout(xDialog, 1000);
-    setTimeout(sn0Dia, 2000);
-    optSet0();
-    setTimeout(enableClick, 4000);
-  }
-
-  function snDiaKickoff(){
-    disableClick();
-    xDialog();
-    pLoading();
-    setTimeout(xDialog, 1000);
-  }
-
-  // Event listener that controls everything that happens
-
-  document.getElementById('rpgOptions').addEventListener("click", function(e) {
-    if(e.target.getAttribute('data-choice') === "0"){
-      if (clicker == true){
-        clickAudio.play();
-        snDiaKickoff();
-        initialize_game();
-      }
+    //functions
+    cyoa.funk = {};
+    //Anims
+    cyoa.funk.updateStats = function() {
+      document.getElementById('hp_js').innerText = cyoa.data.statValues[0];
+      document.getElementById('int_js').innertext = cyoa.data.statValues[1];
+      document.getElementById('per_js').innerText = cyoa.data.statValues[2];
+      document.getElementById('fun_js').innerText = cyoa.data.statValues[3];
+      document.getElementById('usd_js').innerText = cyoa.data.statValues[4];
     };
-    if(e.target.getAttribute('data-choice') === "1"){
-      if (clicker == true){
-        clickAudio.play();
-        snDiaKickoff();
-        setTimeout(sn1Dia, 2000);
-        optSet1();
-        setTimeout(enableClick, 4000);
-      }
-    };
-    if(e.target.getAttribute('data-choice') === "2"){
-      if (clicker===true){
-        clickAudio.play();
-        snDiaKickoff();
-        setTimeout(sn2Dia, 2000);
-        optSet2();
-        setTimeout(enableClick, 4000);
-      }
+
+    // Functions
+    cyoa.funk.disableClick = function() {
+      cyoa.data.clicker = false;
     }
-    if(e.target.getAttribute('data-choice') === "3"){
-      if (clicker===true){
-        clickAudio.play();
-        initialize_game();
-      }
+    cyoa.funk.enableClick = function() {
+      cyoa.data.clicker = true;
     }
-    if(e.target.getAttribute('data-choice') === "4"){
-      if (clicker == true){
-        var randomSeed = Math.random();
-        if (randomSeed <= 0.5)
-        {
-          sn1_1DiaWin();
+    cyoa.funk.flashStats = function() {
+      cyoa.data.statCon.classList.add('fade');
+      setTimeout(function() {cyoa.data.statCon.classList.remove('fade');}, 300);
+    }
+    // These are functions that affect body text
+    cyoa.funk.pLoading = function() {
+      // var pMake = document.createElement("p");
+      // pMake.textContent = "...loading...";
+      cyoa.data.rpgDialog.textContent = "...loading...";
+    }
+    cyoa.funk.xDialog = function() {
+      cyoa.data.rpgDialog.textContent = " ";
+    }
+    cyoa.funk.sn0Dia = function() {
+      var pMake0 = document.createElement("p");
+      var pMake1 = document.createElement("p");
+      pMake0.textContent = "It's Saturday. This has been a long work week, and you deserve to take some time to unwind. There are events on the Outdoor Adventure Program website, and on the BOSS Facebook feed. You can also go out drinking."
+      pMake1.textContent = "What would you like to do?"
+      cyoa.data.rpgDialog.appendChild(pMake0);
+      setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake1);}, 2500);
+      cyoa.funk.optSet0();
+      setTimeout(cyoa.funk.enableClick, 2000);
+    }
+    cyoa.funk.sn1Dia = function(){
+      var pMake = document.createElement("p");
+      var pMake2 = document.createElement("p");
+      pMake.textContent = "There's an e-sports gaming tournament today. Free refreshments for spectators; $35 to enter. If you win the tournament, there's a $100 prize."
+      pMake2.textContent = "What do you want to do?"
+      setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake);}, 1100);
+      setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake2);}, 3000);
+      setTimeout(cyoa.funk.enableClick, 4000);
+    }
+
+    cyoa.funk.sn2Dia = function(){
+      var pMake = document.createElement("p");
+      var pMake2 = document.createElement("p");
+      pMake.textContent = "OAP has a snowmachine ride in Willow, and fat tire bike rentals."
+      pMake2.textContent = "The snowmachine ride is $99, and looks like a lot of fun. Fat tire rentals are $5, look like both fun and a workout. What would you like to do?"
+      setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake);}, 1100);
+      setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake2);}, 2500);
+      setTimeout(cyoa.funk.enableClick, 4000);
+    }
+
+    cyoa.funk.sn3Dia = function(){
+      var pMake = document.createElement("p");
+      var pMake2 = document.createElement("p");
+      pMake.textContent = "Some friends are going out drinking. You look around; everyone is over 21."
+      pMake2.textContent = "You know there should be a designated driver, or a plan to get home. "
+      cyoa.data.rpgDialog.appendChild(pMake);
+    }
+
+    cyoa.funk.sn1_1DiaWin = function(){
+      cyoa.funk.disableClick();
+      cyoa.funk.xDialog();
+      cyoa.sounds.winAudio.play();
+      let pMake  = document.createElement("p");
+      let pMake1 = document.createElement("p");
+      let pMake2 = document.createElement("p");
+      pMake.textContent = "Winner!";
+      pMake1.textContent = "+$100  +Fun";
+      cyoa.data.statValues[4] = 165;
+      cyoa.data.statValues[3] = 25;
+      cyoa.funk.updateStats();
+      pMake2.textContent = "You won the tournament! The competition was fierce, but your finely-honed reflexes took the day. As you exit the building with a grin on your face, Sgt. Binky gives you a thumbs-up. "
+      cyoa.data.rpgDialog.appendChild(pMake);
+      setTimeout(function() {
+        cyoa.sounds.collectAudio.play();
+        cyoa.data.rpgDialog.appendChild(pMake1);
+      }, 2000);
+      setTimeout(function() {
+        cyoa.data.rpgDialog.appendChild(pMake2);
+      }, 3000);
+      cyoa.funk.optSetReset();
+      setTimeout(cyoa.funk.enableClick, 3000);
+    }
+    cyoa.funk.sn1_1DiaLose = function(){
+      cyoa.funk.disableClick();
+      cyoa.funk.xDialog();
+      cyoa.sounds.pewAudio.play();
+      let pMake  = document.createElement("p");
+      let pMake2  = document.createElement("p");
+      cyoa.data.statValues[4] -=35;
+      cyoa.data.statValues[3] +=20;
+      cyoa.funk.updateStats();
+      pMake.textContent = "You took second place, but it was close.";
+      pMake2.textContent = "It really looked like you were going to win, but Sgt. Binky took the lead in the last round, despite having paws instead of hands. \"Next time,\" you say to yourself."
+      cyoa.data.rpgDialog.appendChild(pMake);
+      setTimeout(function() {
+        cyoa.data.rpgDialog.appendChild(pMake2);
+      }, 2000);
+      cyoa.funk.optSetReset();
+      setTimeout(cyoa.funk.enableClick, 3000);
+    }
+    cyoa.funk.sn1_2Dia = function(){
+      cyoa.funk.disableClick();
+      cyoa.funk.xDialog();
+      cyoa.sounds.pewAudio.play();
+      let pMake0 = document.createElement("p");
+      let pMake1 = document.createElement("p");
+      let pMake2 = document.createElement("p");
+      pMake0.textContent = "The action was fast and furious. Sgt. Binky pulled ahead of the competition, despite the lack of opposable thumbs..."
+      pMake1.textContent = "Pew pew pew!";
+      pMake1.textContent = "Binky won. You laughed as you walked away, images of Binky's victory dance playing in your mind.";
+      cyoa.data.statValues[3] +=10;
+      cyoa.funk.updateStats();
+      cyoa.data.rpgDialog.appendChild(pMake0);
+      setTimeout(function() {
+        cyoa.data.rpgDialog.appendChild(pMake1);
+      }, 2000);
+      setTimeout(function() {
+        cyoa.data.rpgDialog.appendChild(pMake2);
+      }, 4000);
+      cyoa.funk.optSetReset();
+      setTimeout(cyoa.funk.enableClick, 4000);
+    }
+
+    //Sets of buttons
+    cyoa.funk.optSetReset = function(){
+      var b1 = document.getElementById("b1");
+      var b2 = document.getElementById("b2");
+      var b3 = document.getElementById("b3");
+      b2.classList.add("hidden");
+      b3.classList.add("hidden");
+      b1.textContent = "Play Again"
+      b1.setAttribute("data-choice", "0");
+    }
+    cyoa.funk.optSet0 = function(){
+      var b1 = document.getElementById("b1");
+      var b2 = document.getElementById("b2");
+      var b3 = document.getElementById("b3");
+      b1.classList.remove("hidden");
+      b2.classList.remove("hidden");
+      b3.classList.remove("hidden");
+      b1.textContent = "Check the BOSS Facebook page for events";
+      b1.setAttribute("data-choice", "1_0");
+      b2.textContent = "Take a look at what the Outdoor Adventure Program is offering";
+      b2.setAttribute("data-choice", "2_0");
+      b3.textContent = "Go out for a drink";
+      b3.setAttribute("data-choice", "3_0");
+    }
+    cyoa.funk.optSet1 = function(){
+      var b1 = document.getElementById("b1");
+      var b2 = document.getElementById("b2");
+      var b3 = document.getElementById("b3");
+      b1.textContent = "Enter the game tournament ($35)";
+      b1.setAttribute("data-choice", "1_1");
+      b2.textContent = "Watch the tournament";
+      b2.setAttribute("data-choice", "1_2");
+      b3.textContent = "Do something else";
+      b3.setAttribute("data-choice", "1_3");
+    }
+    cyoa.funk.optSet2 = function(){
+      var b1 = document.getElementById("b1");
+      var b2 = document.getElementById("b2");
+      var b3 = document.getElementById("b3");
+      b1.textContent = "Take a snowmachine ride ($99)";
+      b1.setAttribute("data-choice", "2_1");
+      b2.textContent = "Rent a fat tire bike ($5)";
+      b2.setAttribute("data-choice", "2_2");
+      b3.textContent = "Do something else";
+      b3.setAttribute("data-choice", "1_3");
+    }
+
+
+    cyoa.funk.initGame = function() {
+      cyoa.funk.disableClick();
+      cyoa.funk.pLoading();
+      cyoa.data.statValues = [50,25,20,5,200];
+      cyoa.funk.updateStats();
+      setTimeout(cyoa.funk.xDialog, 1000);
+      setTimeout(cyoa.funk.sn0Dia, 2000);
+      cyoa.funk.optSet0();
+      setTimeout(cyoa.funk.enableClick, 4000);
+    }
+
+    cyoa.funk.snDiaKickoff = function(){
+      cyoa.sounds.clickAudio.play();
+      cyoa.funk.disableClick();
+      cyoa.funk.xDialog();
+      cyoa.funk.pLoading();
+      setTimeout(cyoa.funk.xDialog, 1000);
+    }
+
+    // Event listener that controls everything that happens
+
+    cyoa.data.rpgOptions.addEventListener("click", function(e) {
+      if(e.target.getAttribute('data-choice') === "0"){ //Start a new game button
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.initGame();
         }
-        else{
-          sn1_1DiaLose();
+      };
+      if(e.target.getAttribute('data-choice') === "1_0"){ //BOSS button
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.sn1Dia();
+          cyoa.funk.optSet1();
+        }
+      };
+      if(e.target.getAttribute('data-choice') === "2_0"){ // OAP button
+        if (cyoa.data.clicker===true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.sn2Dia();
+          cyoa.funk.optSet2();
+          cyoa.funk.enableClick();
         }
       }
-    };
+      if(e.target.getAttribute('data-choice') === "3_0"){ // Get a drink button
+        if (cyoa.data.clicker===true){
+          //do drink stuff
+        }
+      }
+      if(e.target.getAttribute('data-choice') === "1_1"){ //Enter the BOSS tournament button, with random outcome
+        if (cyoa.data.clicker == true){
+          var randomSeed = Math.random();
+          if (randomSeed <= 0.5)
+          {
+            cyoa.funk.sn1_1DiaWin();
+          }
+          else{
+            cyoa.funk.sn1_1DiaLose();
+          }
+        }
 
-  });
+      };
+      if(e.target.getAttribute('data-choice') === "1_2"){ //Watch the BOSS tournament button
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.sn1_2Dia();
+          cyoa.funk.optSetReset();
+        }
+      };
+      if(e.target.getAttribute('data-choice') === "1_3"){ //Go back to top button
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.initGame();
+        }
+      };
+      if(e.target.getAttribute('data-choice') === "2_1"){ //Ride a snowmobile / snowmachine
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.initGame();
+        }
+      };
+      if(e.target.getAttribute('data-choice') === "2_1"){ //Rent a fat tire bike
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.initGame();
+        }
+      };
+      // There is no 2_3 option because it's just a reset
 
-  window.onload = initialize_game;
+    });
+
+    window.addEventListener('load', cyoa.funk.initGame() ); 
+  }) ();
 </script>
 
 
