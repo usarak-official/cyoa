@@ -257,7 +257,7 @@ and is in no way endorsed by said user.-->
   </section>
 </div>
 <script type="text/javascript">
-  (function (){
+  (function stuff(){
     // namespace var
     var cyoa = {};
 
@@ -284,7 +284,7 @@ and is in no way endorsed by said user.-->
     //Anims
     cyoa.funk.updateStats = function() {
       document.getElementById('hp_js').innerText = cyoa.data.statValues[0];
-      document.getElementById('int_js').innertext = cyoa.data.statValues[1];
+      document.getElementById('int_js').innerText = cyoa.data.statValues[1];
       document.getElementById('per_js').innerText = cyoa.data.statValues[2];
       document.getElementById('fun_js').innerText = cyoa.data.statValues[3];
       document.getElementById('usd_js').innerText = cyoa.data.statValues[4];
@@ -320,6 +320,26 @@ and is in no way endorsed by said user.-->
       cyoa.funk.optSet0();
       setTimeout(cyoa.funk.enableClick, 2000);
     }
+    cyoa.funk.sn0_1Dia = function() {
+      var pMake0 = document.createElement("p");
+      var pMake1 = document.createElement("p");
+      pMake0.textContent = "You made it through Saturday, safely."
+      pMake1.textContent = "You still have some money in your wallet, and the weekend isn't over yet. You can take it easy, check out the OAP events, or go out for a drink. Don't forget you have work on Monday."
+      cyoa.data.rpgDialog.appendChild(pMake0);
+      setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake1);}, 2500);
+      cyoa.funk.optSet0_1();
+      setTimeout(cyoa.funk.enableClick, 2000);
+    }
+    cyoa.funk.sn0_2Dia = function() {
+      var pMake0 = document.createElement("p");
+      var pMake1 = document.createElement("p");
+      pMake0.textContent = "You had a pretty good weekend, and didn't get into trouble."
+      pMake1.textContent = "You made smart choices, and avoided doing anything that would have a lasting financial or career impact."
+      cyoa.data.rpgDialog.appendChild(pMake0);
+      setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake1);}, 2500);
+      cyoa.funk.optSetReset();
+      setTimeout(cyoa.funk.enableClick, 2000);
+    }
     cyoa.funk.sn1Dia = function(){
       var pMake = document.createElement("p");
       var pMake2 = document.createElement("p");
@@ -327,6 +347,7 @@ and is in no way endorsed by said user.-->
       pMake2.textContent = "What do you want to do?"
       setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake);}, 1100);
       setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake2);}, 3000);
+      cyoa.funk.optSet1();
       setTimeout(cyoa.funk.enableClick, 4000);
     }
 
@@ -334,9 +355,20 @@ and is in no way endorsed by said user.-->
       var pMake = document.createElement("p");
       var pMake2 = document.createElement("p");
       pMake.textContent = "OAP has a snowmachine ride in Willow, and fat tire bike rentals."
-      pMake2.textContent = "The snowmachine ride is $99, and looks like a lot of fun. Fat tire rentals are $5, look like both fun and a workout. What would you like to do?"
+      pMake2.textContent = "The snowmachine ride is $99, and looks like a lot of fun. Fat tire rentals are $5, looks like both fun and a workout. What would you like to do?"
       setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake);}, 1100);
       setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake2);}, 2500);
+      cyoa.funk.optSet2();
+      setTimeout(cyoa.funk.enableClick, 4000);
+    }
+    cyoa.funk.sn2_0_1Dia = function(){
+      var pMake = document.createElement("p");
+      var pMake2 = document.createElement("p");
+      pMake.textContent = "OAP has another snowmachine ride by the Knik river, and you can borrow a pair of cross-country skis for free."
+      pMake2.textContent = "What would you like to do?"
+      setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake);}, 1100);
+      setTimeout(function() {cyoa.data.rpgDialog.appendChild(pMake2);}, 2500);
+      cyoa.funk.optSet2_0_1();
       setTimeout(cyoa.funk.enableClick, 4000);
     }
 
@@ -355,6 +387,7 @@ and is in no way endorsed by said user.-->
       let pMake  = document.createElement("p");
       let pMake1 = document.createElement("p");
       let pMake2 = document.createElement("p");
+      cyoa.funk.flashStats();
       pMake.textContent = "Winner!";
       pMake1.textContent = "+$100  +Fun";
       cyoa.data.statValues[4] = 165;
@@ -369,7 +402,7 @@ and is in no way endorsed by said user.-->
       setTimeout(function() {
         cyoa.data.rpgDialog.appendChild(pMake2);
       }, 3000);
-      cyoa.funk.optSetReset();
+      cyoa.funk.optSetNextDay();
       setTimeout(cyoa.funk.enableClick, 3000);
     }
     cyoa.funk.sn1_1DiaLose = function(){
@@ -378,6 +411,7 @@ and is in no way endorsed by said user.-->
       cyoa.sounds.pewAudio.play();
       let pMake  = document.createElement("p");
       let pMake2  = document.createElement("p");
+      cyoa.funk.flashStats();
       cyoa.data.statValues[4] -=35;
       cyoa.data.statValues[3] +=20;
       cyoa.funk.updateStats();
@@ -387,17 +421,16 @@ and is in no way endorsed by said user.-->
       setTimeout(function() {
         cyoa.data.rpgDialog.appendChild(pMake2);
       }, 2000);
-      cyoa.funk.optSetReset();
+      cyoa.funk.optSetNextDay();
       setTimeout(cyoa.funk.enableClick, 3000);
     }
     cyoa.funk.sn1_2Dia = function(){
       cyoa.funk.disableClick();
-      cyoa.funk.xDialog();
       cyoa.sounds.pewAudio.play();
       let pMake0 = document.createElement("p");
       let pMake1 = document.createElement("p");
       let pMake2 = document.createElement("p");
-      pMake0.textContent = "The action was fast and furious. Sgt. Binky pulled ahead of the competition, despite the lack of opposable thumbs..."
+      pMake0.textContent = "The action was fast and furious. Sgt. Binky pulled ahead of the competition, despite the lack of opposable thumbs...";
       pMake1.textContent = "Pew pew pew!";
       pMake1.textContent = "Binky won. You laughed as you walked away, images of Binky's victory dance playing in your mind.";
       cyoa.data.statValues[3] +=10;
@@ -409,8 +442,47 @@ and is in no way endorsed by said user.-->
       setTimeout(function() {
         cyoa.data.rpgDialog.appendChild(pMake2);
       }, 4000);
-      cyoa.funk.optSetReset();
+      cyoa.funk.optSetNextDay();
       setTimeout(cyoa.funk.enableClick, 4000);
+    }
+
+    cyoa.funk.sn2_1Dia = function(){
+      cyoa.funk.disableClick();
+      var pMake0 = document.createElement("p");
+      var pMake1 = document.createElement("p");
+      pMake0.textContent = "That snowmachine was a ton of fun! Cold, but what a rush.";
+      pMake1.textContent = "You brush the snow off your face and realize the day has gotten late. ";
+      cyoa.data.statValues[4] -=99;
+      cyoa.funk.updateStats();
+      cyoa.funk.flashStats();
+      cyoa.sounds.collectAudio.play();
+      setTimeout(function() {
+        cyoa.data.rpgDialog.appendChild(pMake0);
+      }, 1100);
+      setTimeout(function() {
+        cyoa.data.rpgDialog.appendChild(pMake1);
+      }, 2200);
+      cyoa.funk.optSetNextDay();
+      setTimeout(cyoa.funk.enableclick, 3000);
+    }
+    cyoa.funk.sn2_1_1Dia = function(){
+      cyoa.funk.disableClick();
+      var pMake0 = document.createElement("p");
+      var pMake1 = document.createElement("p");
+      pMake0.textContent = "That snowmachine was a ton of fun! Cold, but what a rush.";
+      pMake1.textContent = "You brush the snow off your face and realize the day has gotten late. ";
+      cyoa.data.statValues[4] -=99;
+      cyoa.funk.updateStats();
+      cyoa.funk.flashStats();
+      cyoa.sounds.collectAudio.play();
+      setTimeout(function() {
+        cyoa.data.rpgDialog.appendChild(pMake0);
+      }, 1100);
+      setTimeout(function() {
+        cyoa.data.rpgDialog.appendChild(pMake1);
+      }, 2200);
+      cyoa.funk.optSetReset();
+      setTimeout(cyoa.funk.enableclick, 3000);
     }
 
     //Sets of buttons
@@ -423,6 +495,15 @@ and is in no way endorsed by said user.-->
       b1.textContent = "Play Again"
       b1.setAttribute("data-choice", "0");
     }
+    cyoa.funk.optSetNextDay = function(){
+      var b1 = document.getElementById("b1");
+      var b2 = document.getElementById("b2");
+      var b3 = document.getElementById("b3");
+      b2.classList.add("hidden");
+      b3.classList.add("hidden");
+      b1.textContent = "Go to sleep for the night"
+      b1.setAttribute("data-choice", "0_1");
+    }
     cyoa.funk.optSet0 = function(){
       var b1 = document.getElementById("b1");
       var b2 = document.getElementById("b2");
@@ -434,6 +515,20 @@ and is in no way endorsed by said user.-->
       b1.setAttribute("data-choice", "1_0");
       b2.textContent = "Take a look at what the Outdoor Adventure Program is offering";
       b2.setAttribute("data-choice", "2_0");
+      b3.textContent = "Go out for a drink";
+      b3.setAttribute("data-choice", "3_0");
+    }
+    cyoa.funk.optSet0_1 = function(){
+      var b1 = document.getElementById("b1");
+      var b2 = document.getElementById("b2");
+      var b3 = document.getElementById("b3");
+      b1.classList.remove("hidden");
+      b2.classList.remove("hidden");
+      b3.classList.remove("hidden");
+      b1.textContent = "Take it easy";
+      b1.setAttribute("data-choice", "0_2");
+      b2.textContent = "Check out the OAP";
+      b2.setAttribute("data-choice", "2_0_1");
       b3.textContent = "Go out for a drink";
       b3.setAttribute("data-choice", "3_0");
     }
@@ -459,7 +554,25 @@ and is in no way endorsed by said user.-->
       b3.textContent = "Do something else";
       b3.setAttribute("data-choice", "1_3");
     }
+    cyoa.funk.optSet2_0_1 = function(){
+      var b1 = document.getElementById("b1");
+      var b2 = document.getElementById("b2");
+      var b3 = document.getElementById("b3");
+      b1.textContent = "Take a snowmachine ride ($99)";
+      b1.setAttribute("data-choice", "2_1");
+      b2.textContent = "Borrow the skis";
+      b2.setAttribute("data-choice", "2_2_1");
+      b3.textContent = "Do something else";
+      b3.setAttribute("data-choice", "0_2");
+    }
 
+    cyoa.funk.snDiaKickoff = function(){
+      cyoa.sounds.clickAudio.play();
+      cyoa.funk.disableClick();
+      cyoa.funk.xDialog();
+      cyoa.funk.pLoading();
+      setTimeout(cyoa.funk.xDialog, 1000);
+    }
 
     cyoa.funk.initGame = function() {
       cyoa.funk.disableClick();
@@ -471,13 +584,13 @@ and is in no way endorsed by said user.-->
       cyoa.funk.optSet0();
       setTimeout(cyoa.funk.enableClick, 4000);
     }
-
-    cyoa.funk.snDiaKickoff = function(){
-      cyoa.sounds.clickAudio.play();
+    cyoa.funk.continueGame = function() {
       cyoa.funk.disableClick();
-      cyoa.funk.xDialog();
       cyoa.funk.pLoading();
       setTimeout(cyoa.funk.xDialog, 1000);
+      setTimeout(cyoa.funk.sn0_1Dia, 2000);
+      cyoa.funk.optSet0_1();
+      setTimeout(cyoa.funk.enableClick, 3000);
     }
 
     // Event listener that controls everything that happens
@@ -489,19 +602,34 @@ and is in no way endorsed by said user.-->
           cyoa.funk.initGame();
         }
       };
+      if(e.target.getAttribute('data-choice') === "0_1"){ //Go to Sunday
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.continueGame();
+        }
+      };
+      if(e.target.getAttribute('data-choice') === "0_2"){ //Take it easy on Sunday
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.sn0_2Dia();
+        }
+      };
       if(e.target.getAttribute('data-choice') === "1_0"){ //BOSS button
         if (cyoa.data.clicker == true){
           cyoa.funk.snDiaKickoff();
           cyoa.funk.sn1Dia();
-          cyoa.funk.optSet1();
         }
       };
       if(e.target.getAttribute('data-choice') === "2_0"){ // OAP button
         if (cyoa.data.clicker===true){
           cyoa.funk.snDiaKickoff();
           cyoa.funk.sn2Dia();
-          cyoa.funk.optSet2();
-          cyoa.funk.enableClick();
+        }
+      }
+      if(e.target.getAttribute('data-choice') === "2_0_1"){ // OAP button on Sunday
+        if (cyoa.data.clicker===true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.sn2_0_1Dia();
         }
       }
       if(e.target.getAttribute('data-choice') === "3_0"){ // Get a drink button
@@ -525,7 +653,7 @@ and is in no way endorsed by said user.-->
       if(e.target.getAttribute('data-choice') === "1_2"){ //Watch the BOSS tournament button
         if (cyoa.data.clicker == true){
           cyoa.funk.snDiaKickoff();
-          cyoa.funk.sn1_2Dia();
+          setTimeout(cyoa.funk.sn1_2Dia, 1100);
           cyoa.funk.optSetReset();
         }
       };
@@ -535,13 +663,25 @@ and is in no way endorsed by said user.-->
           cyoa.funk.initGame();
         }
       };
-      if(e.target.getAttribute('data-choice') === "2_1"){ //Ride a snowmobile / snowmachine
+      if(e.target.getAttribute('data-choice') === "2_1"){ //Ride a snowmachine
         if (cyoa.data.clicker == true){
           cyoa.funk.snDiaKickoff();
           cyoa.funk.initGame();
         }
       };
-      if(e.target.getAttribute('data-choice') === "2_1"){ //Rent a fat tire bike
+      if(e.target.getAttribute('data-choice') === "2_1_1"){ //Ride a snowmachine again
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.initGame();
+        }
+      };
+      if(e.target.getAttribute('data-choice') === "2_2"){ //Rent a fat tire bike
+        if (cyoa.data.clicker == true){
+          cyoa.funk.snDiaKickoff();
+          cyoa.funk.initGame();
+        }
+      };
+      if(e.target.getAttribute('data-choice') === "2_2_1"){ //borrow some skis
         if (cyoa.data.clicker == true){
           cyoa.funk.snDiaKickoff();
           cyoa.funk.initGame();
@@ -553,6 +693,7 @@ and is in no way endorsed by said user.-->
 
     window.addEventListener('load', cyoa.funk.initGame() ); 
   }) ();
+var coincounter = 1;
 </script>
 
 
